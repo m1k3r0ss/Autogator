@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <!-- Add necessary CSS libraries -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Add your custom CSS styles -->
+    <!-- <link rel="stylesheet" href="dashboard.css"> -->
+    <!-- Add necessary CSS for the circular progress bar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.css">
+
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .headingblob
+        {
+            position: relative;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        section {
+            
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            /* min-height: 75vh; */
+            ;
+        }
+
+        .blob {
+            position: absolute;
+            align-self: left;
+            width: 500px;
+            height: 500px;
+            justify-items: left;
+            padding: 150px;
+            /* background-color: #fff; */
+            /* z-index: 1; */
+        }
+
+    
+
+        h1{
+            color:rgb(255, 255, 255);
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+            font-style:italic;
+        }
+
+        #header {
+            position: relative;
+            /* display: flex; */
+            /* align-items:flex-start; */
+            justify-items: left;
+            align-self: left;
+            padding: 150px;
+
+            color: rgba(255, 235, 235, 0.907)
+        }
+
+        body {
+            /* background-image: url('stacked-peaks-haikei.svg'); */
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            margin: 0;
+            background-image: url(Contour\ Line.svg);
+            z-index: -1;
+        }
+        
+
+
+        #dataContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .dataContainer {
+            display: flex;
+            flex-wrap: wrap;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 20px;
+            flex: 1;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .dataItem {
+            background-color: #474b4f;
+            padding: 10px;
+            border-radius: 10px;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease-in-out;
+            min-width: 300px;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+
+        .dataItem:hover {
+            transform: scale(1.10);
+            box-shadow: 0 2px 4px rgb(101, 79, 79);
+            background: linear-gradient(45deg, #61892f, #6b6e70, #7eff57);
+        }
+
+        .dataItem i {
+            margin-bottom: 10px;
+            font-size: 4;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .dataItem:hover i {
+            transform: rotate(180deg);
+        }
+
+        .dataItem span {
+            color: #fff;
+            font-weight: bold;
+            opacity: 1;
+            /* transition: opacity 0.3s ease-in-out; */
+             text-shadow: 0 0 10px #fefefe, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 50px #72ff80, 0 0 60px #7eff72, 0 0 70px #00b424; 
+        }
+
+        .circular-progress {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            opacity: 1;
+        }
+
+        .progress-text {
+            font-size: 1rem;
+            line-height: 1.2;
+            color: #555;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+</head>
+
+<body>
+   
+    
+        <section>
+            <div class="blob">
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color: rgb(60, 165, 125);"></stop>
+                        <stop offset="100%" style="stop-color: rgb(181, 172, 53);"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path fill="url(#gradient)">
+                        <animate attributeName="d"
+                        dur="10000ms"
+                        repeatCount="indefinite"
+
+                        values="M391.5,350.5Q366,451,257.5,437.5Q149,424,122.5,337Q96,250,125.5,168Q155,86,261.5,66Q368,46,392.5,148Q417,250,391.5,350.5Z;
+                        
+                        M425.5,340.5Q354,431,260,413Q166,395,98.5,322.5Q31,250,92.5,167Q154,84,253.5,78Q353,72,425,161Q497,250,425.5,340.5Z;
+                        
+                        M403,340.5Q355,431,251,429.5Q147,428,87,339Q27,250,95,174.5Q163,99,253.5,93Q344,87,397.5,168.5Q451,250,403,340.5Z;
+                        
+                        M381.5,315.5Q325,381,234.5,407.5Q144,434,115,342Q86,250,127.5,180Q169,110,270.5,74Q372,38,405,144Q438,250,381.5,315.5Z;
+                        
+                        M390.5,333.5Q346,417,246.5,423Q147,429,120,339.5Q93,250,132.5,182.5Q172,115,273,75Q374,35,404.5,142.5Q435,250,390.5,333.5Z;
+                        
+                        M404.5,351Q366,452,254,444.5Q142,437,71.5,343.5Q1,250,67,149Q133,48,246.5,54Q360,60,401.5,155Q443,250,404.5,351Z;
+                        
+                        M391.5,350.5Q366,451,257.5,437.5Q149,424,122.5,337Q96,250,125.5,168Q155,86,261.5,66Q368,46,392.5,148Q417,250,391.5,350.5Z">
+                    </animate>
+                    </path>
+                  </svg>
+            </div>
+
+           
+            <div id="header">
+                <h1>Dashboard</h1>
+            </div>
+        </section>
+    </div>
+   
+
+    <!-- Add your dashboard components here -->
+    <div id="dataContainer">
+        <div class="dataItem">
+            <i class="fas fa-map-marker-alt fa-solid fa-4x"></i>
+            <span id="cityData"></span> (City)
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-clock fa-solid fa-4x"></i>
+            <span id="timeData"></span> (Time)
+        </div>
+         <a href="fivedayforecast.html" target="_blank"> 
+        <div class="dataItem container">
+            <i class="fas fa-thermometer-half fa-solid fa-4x"></i>
+            <span id="tempData"></span> (Temperature)
+        </div>
+        </a>
+        <div class="dataItem">
+            <i class="fas fa-wind fa-solid fa-4x"></i>
+            <span id="speedData"></span> (Wind Speed)
+        </div>
+        <div class="dataItem">
+            <div id="moistureProgress" class="circular-progress"></div>
+            <span id="moistureData"></span> (Moisture)
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-cloud-showers-heavy fa-solid fa-4x"></i>
+            <span id="willRainData"></span> (Will Rain)
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-cloud-rain fa-solid fa-4x"></i>
+            <span id="chanceRainData"></span> (Chance of Rain)
+        </div>
+    </div>
+
+    <!-- Add necessary JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <!-- Add necessary JavaScript for the circular progress bar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js"></script>
+
+    <!-- Add your custom JavaScript code -->
+    <script>
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyCDd_2Cnzmzt_zoHCELFNZqJzb7KTNF874",
+            authDomain: "autogator-782e9.firebaseapp.com",
+            databaseURL: "https://autogator-782e9-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "autogator-782e9",
+            storageBucket: "autogator-782e9.appspot.com",
+            messagingSenderId: "127164675027",
+            appId: "1:127164675027:web:a5756fbffea155855db526"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        // Get a reference to the database
+        var database = firebase.database();
+        var dataRef = database.ref('datab');
+
+        // Variables to keep track of the progress bar instances
+        var moistureProgress;
+        var progressInitialized = false;
+
+        // Read data from the database and update the dashboard
+        function fetchDataAndUpdatePlaceholders() {
+            dataRef.once('value', function (snapshot) {
+                var dataItems = snapshot.val();
+
+                // Update each placeholder with the retrieved data
+                $('#cityData').text(dataItems.city);
+                $('#timeData').text(dataItems.time);
+                $('#tempData').text(dataItems.temp + ' °C');
+                $('#speedData').text(dataItems.speed + ' km/h');
+                $('#moistureData').text(dataItems.moisture + ' %');
+                $('#willRainData').text(dataItems.willrain);
+                $('#chanceRainData').text(dataItems.chancerain + ' %');
+
+                // Update the circular progress bar for moisture
+                var moistureValue = parseFloat(dataItems.moisture);
+                if (!progressInitialized) {
+                    moistureProgress = new ProgressBar.Circle('#moistureProgress', {
+                        color: '#86c232',
+                        strokeWidth: 10,
+                        trailWidth: 10,
+                        text: {
+                            value: '',
+                            className: 'progress-text'
+                        }
+                    });
+                    progressInitialized = true;
+                }
+
+                moistureProgress.set((moistureValue - 10) / (1024 - 10)); // Scale the moisture value to a range of 0 to 1
+            });
+        }
+
+        // Initial data fetch and placeholder update
+        fetchDataAndUpdatePlaceholders();
+
+        // Refresh data every 15 seconds
+        setInterval(fetchDataAndUpdatePlaceholders, 15000);
+    </script>
+</body>
+
+</html>

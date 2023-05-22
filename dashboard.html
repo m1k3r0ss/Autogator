@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <!-- Add necessary CSS libraries -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Add your custom CSS styles -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <!-- Add your dashboard components here -->
+    <div id="dataContainer">
+        <div class="dataItem">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="cityData"></span>
+        </div>
+        <div class="dataItem">
+            <i class="far fa-clock"></i>
+            <span id="timeData"></span>
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-thermometer-half"></i>
+            <span id="tempData"></span>
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-wind"></i>
+            <span id="speedData"></span>
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-tint"></i>
+            <span id="moistureData"></span>
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-cloud-showers-heavy"></i>
+            <span id="willRainData"></span>
+        </div>
+        <div class="dataItem">
+            <i class="fas fa-cloud-rain"></i>
+            <span id="chanceRainData"></span>
+        </div>
+    </div>
+
+    <!-- Add necessary JavaScript libraries -->
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+
+    <!-- Add your custom JavaScript code -->
+    <script src="dashboard.js"></script>
+</body>
+</html>
