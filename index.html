@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autogator Dashboard</title>
+  <link rel="stylesheet" href="styles.css"> <!-- External CSS file -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CSS -->
+</head>
+<body>
+    <header>
+        <div class="header">
+          <h1>Autogator</h1>
+          <div class="icon-wrapper">
+            <img id="icon" src="plant.png">
+          </div>
+          <a href="Agriculture Automation.pdf" target="blank"><div id="about"> <!-- New "About" button -->
+            <button>About</button>
+          </div>
+        </a>
+          </div>
+          
+        </div>
+       
+      </header>
+      
+
+  <main>
+
+    <div class="grid-container">
+      <div class="grid-item"><i class="fas fa-map-marker-alt fa-solid fa-4x"></i><span id="cityData"></span>City</div>
+      <div class="grid-item"><i class="far fa-clock fa-4x"></i><span id="timeData"></span>Time</div>
+     <a href="temperature.html" target="blank"> <div class="grid-item"><i class="fas fa-thermometer-half fa-solid fa-4x"></i><span id="temperatureData"></span>Temperature</div></a>
+      <div class="grid-item"><i class="fas fa-wind fa-solid fa-4x"></i><span id="windspeedData"></span>Windspeed</div>
+      <div class="grid-item"><span id="moistureData"></span>Moisture Levels</div>
+      <div class="grid-item"><i class="fas fa-cloud-showers-heavy fa-solid fa-4x"></i><span id="willRainData"></span>Will it Rain</div>
+      <div class="grid-item"><i class="fas fa-tint fa-solid fa-4x"></i><span id="chanceRainData"></span>Rain Probability</div>
+      <div class="grid-item override-item" id="override">
+        <button id="pumpOverrideButton">Pump Override</button>
+        <input type="number" id="pumpRuntimeInput" placeholder="Pump Runtime (minutes)">
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 My Website. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script> <!-- External JavaScript file -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+  <!-- Add necessary JavaScript for the circular progress bar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js"></script>
+
+</body>
+</html>

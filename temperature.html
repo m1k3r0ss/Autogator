@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast Chart</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color:#d8f8df;
+    }
+    h1 {
+      text-align: center;
+      color: black;
+      align-items: baseline;
+      padding-left: 30px;
+    }
+    .chart {
+      min-height: 600px;
+      min-width: 600px;
+      border-radius: 30px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Weather Forecast</h1>
+  
+  <div class="chart"></div>
+
+  <script>
+    // Fetch the weather data from WeatherAPI
+    fetch('https://api.weatherapi.com/v1/forecast.json?key=9b12704fd04d449084e102955232005&q=Kolkata&days=5')
+      .then(response => response.json())
+      .then(data => {
+        const forecast = data.forecast.forecastday;
+        
+        // Extract min, max, and average temperatures for each day
+        const temperatures = forecast.map(day => ({
+          date: day.date,
+          minTemp: day.day.mintemp_c,
+          maxTemp: day.day.maxtemp_c,
+          avgTemp: day.day.avgtemp_c
+        }));
+
+        // Create the chart container
+        const chartContainer = document.querySelector('.chart');
+
+        // Draw the chart
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+          const dataTable = new google.visualization.DataTable();
+          dataTable.addColumn('string', 'Date');
+          dataTable.addColumn('number', 'Min Temp');
+          dataTable.addColumn('number', 'Max Temp');
+          dataTable.addColumn('number', 'Avg Temp');
+          
+          temperatures.forEach(temp => {
+            dataTable.addRow([temp.date, temp.minTemp, temp.maxTemp, temp.avgTemp]);
+          });
+
+          const options = {
+            title: '5-Day Weather Forecast',
+            hAxis: { title: 'Date' },
+            vAxis: { title: 'Temperature (°C)' },
+            legend: { position: 'bottom' },
+            curveType: 'function'
+          };
+
+          const chart = new google.visualization.LineChart(chartContainer);
+          chart.draw(dataTable, options);
+        }
+      })
+      .catch(error => console.error('Error fetching weather data:', error));
+  </script>
+
+  <!-- Include the Google Charts API -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+</body>
+</html>
