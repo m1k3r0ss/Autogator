@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autogator Dashboard</title>
+  <!-- <link rel="stylesheet" href="styles.css"> External CSS file -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0-beta3/css/all.min.css">
+  <style>    /* Add your CSS styles here */
+
+    /* Example media query for responsiveness */
+    @media screen and (max-width: 600px) {
+
+        /* Styles specific to mobile devices */
+        .mobile body {
+            /* background-image: url(mesh-527.png); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay, hard-light, overlay, normal;
+        }
+
+        .mobile .header {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #ffffff, #e9d4ff);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            overflow-wrap: break-word;
+            padding: 10px;
+        }
+
+        .mobile section {
+            position: relative;
+            width: 100%;
+            height: 20vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(0, 5, 34);
+            background: linear-gradient(245deg, rgba(0, 5, 34, 1) 38%, rgba(58, 1, 115, 1) 65%);
+            border-radius: 0 0 60% 60% / 0 0 100% 100%;
+            transform: scaleX(1.5);
+            z-index: -1;
+        }
+
+       
+    }
+
+    body {
+        background-color: #d8f8df;
+    }
+
+    .header {
+        font-size: 30px;
+        /* font-weight: 900; */
+        font-family: -apple-system-headline BlinkMacSystemFont, sans-serif;
+        color: rgb(11, 90, 0);
+        /* background-color:white; */
+        
+        display: flex;
+        align-items: center;
+        
+        padding-left: 10px;
+        padding-bottom: 50px;
+    }
+
+    /* .header span {
+        display: flex;
+    } */
+
+    .header h1 {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .icon-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+
+    #icon {
+        width: 80px;
+        height: 80px;
+        margin-left: 10px;
+        
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    #about {
+        
+        margin-left: auto;
+        margin-right: 10px;
+        display: block;
+      }
+      
+      a {
+        display: block; /* Make the <a> tag a block-level element */
+        text-align: center; /* Center the content within the <a> tag */
+        text-decoration: none; /* Remove the underline */
+      }
+
+
+    .grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+      
+        border-top: 1px solid black;
+        padding-bottom: 150px;
+        padding-top: 100px;
+
+    }
+    .override-item.grid-item {
+        background-color: rgba(255, 0, 0, 0.529);
+    }
+    .override-item.grid-item:hover {
+        background-color: rgb(255, 0, 0);
+       
+        
+    }
+    button {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.8);
+        background: rgba(145, 92, 182, 0.881);
+        
+        border-radius: 10px;
+        font-weight: normal;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+        
+      }
+      button:hover {
+        color: rgba(255, 255, 255, 1);
+        box-shadow: 0 5px 15px rgb(0, 0, 0);
+        transform: scale(1.10);
+      }
+      /* /* main {
+        flex: 1; */
+      
+
+      footer {
+        flex-shrink: 0;
+      }
+
+    .grid-item {
+        width: 200px;
+        height: 200px;
+        /* background-color: lightgray; */
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        background-color: #7ee793c0;
+        /* backdrop-filter: blur(10px); */
+        /* Adds the blur effect */
+        /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.233); */
+        /* Adds a subtle shadow */
+        transition: transform 0.3s ease-in-out;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        flex-grow: 1;
+    }
+    span{
+        z-index: 1;
+        font-size: 10;
+    }
+   
+    .grid-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 4px rgb(0, 0, 0);
+        background: linear-gradient(45deg, #0485006b, #1eff0044, #94de0160);
+    }
+
+    .grid-item i {
+        margin-bottom: 10px;
+        transition: transform 0.3s ease-in-out;
+        color: white;
+    }
+
+    .grid-item:hover i {
+        transform: rotate(360deg);
+        color: #2e7200;
+
+    }
+/* 
+    .grid-item span {
+        color: #fff;
+        font-weight: bold;
+        opacity: 1;
+        /* transition: opacity 0.3s ease-in-out; */
+        /* text-shadow: 0 0 10px #fefefe, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 50px #72ff80, 0 0 60px #7eff72, 0 0 70px #00b424;  */
+    
+
+    .grid-item:hover span {
+        color: #2e7200;
+    } */
+
+    .circular-progress {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        opacity: 1;
+    }
+
+
+    .progress-text {
+        font-size: 1rem;
+        line-height: 1.2;
+        color: #555;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    input{
+        scale: 90%;
+    }
+    </style> <!-- Font Awesome CSS -->
+</head>
+<body>
+    <header>
+        <div class="header" >
+          <h1>Autogator</h1>
+          <div class="icon-wrapper">
+            <img id="icon" src="plant.png">
+          </div>
+          <a href="Agriculture Automation.pdf" target="blank"><div id="about"> <!-- New "About" button -->
+            <button>About</button>
+          </div>
+        </a>
+          </div>
+
+       
+      </header>
+      
+
+  <main>
+
+    <div class="grid-container">
+      <div class="grid-item"><i class="fas fa-map-marker-alt fa-solid fa-4x"></i><span id="cityData"></span>City</div>
+      <div class="grid-item"><i class="far fa-clock fa-4x"></i><span id="timeData"></span>Time</div>
+     <a href="temperature.html" target="blank"> <div class="grid-item"><i class="fas fa-thermometer-half fa-solid fa-4x"></i><span id="temperatureData"></span>Temperature</div></a>
+      <div class="grid-item"><i class="fas fa-wind fa-solid fa-4x"></i><span id="windspeedData"></span>Windspeed</div>
+      <div class="grid-item"><span id="moistureData"></span>Moisture Levels</div>
+      <div class="grid-item"><i class="fas fa-cloud-showers-heavy fa-solid fa-4x"></i><span id="willRainData"></span>Will it Rain</div>
+      <div class="grid-item"><i class="fas fa-tint fa-solid fa-4x"></i><span id="chanceRainData"></span>Rain Probability</div>
+      <div class="grid-item override-item" id="override">
+        <button id="pumpOverrideButton">Pump Override</button>
+        <input type="number" id="pumpRuntimeInput" placeholder="Pump Runtime (minutes)">
+      </div>
+    </div>
+
+    
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Autogator. All rights reserved.</p>
+  </footer>
+
+  <!-- <script src="script.js"></script>  -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+  <!-- Add necessary JavaScript for the circular progress bar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.1.0/progressbar.min.js"></script>
+  <script>
+    
+
+function isMobileDevice() {
+  return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+// Add a class to the body based on the device type
+if (isMobileDevice()) {
+  document.body.classList.add('mobile');
+}
+
+  // Initialize Firebase
+  var firebaseConfig = {
+      apiKey: "AIzaSyCDd_2Cnzmzt_zoHCELFNZqJzb7KTNF874",
+      authDomain: "autogator-782e9.firebaseapp.com",
+      databaseURL: "https://autogator-782e9-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "autogator-782e9",
+      storageBucket: "autogator-782e9.appspot.com",
+      messagingSenderId: "127164675027",
+      appId: "1:127164675027:web:a5756fbffea155855db526"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the database
+var database = firebase.database();
+var dataRef = database.ref('datab');
+
+// Variables to keep track of the progress bar instances
+var moistureProgress;
+var progressInitialized = false;
+
+// Read data from the database and update the dashboard
+function fetchDataAndUpdatePlaceholders() {
+  dataRef.once('value', function (snapshot) {
+    var dataItems = snapshot.val();
+
+    // Update each placeholder with the retrieved data
+    $('#cityData').text(dataItems.city);
+    $('#timeData').text(dataItems.time);
+    $('#temperatureData').text(dataItems.temp + ' °C');
+    $('#windspeedData').text(dataItems.speed + ' km/h');
+    
+    var moistureValue = parseFloat(dataItems.moisture);
+    var moisturePercentage = (moistureValue / 1024) * 100; // Calculate the percentage
+    
+    $('#moistureData').text(moisturePercentage.toFixed(2) + ' %');
+    $('#willRainData').text(dataItems.willrain);
+    $('#chanceRainData').text(dataItems.chancerain + ' %');
+    // Update the circular progress bar for moisture
+    if (!progressInitialized) {
+      moistureProgress = new ProgressBar.Circle('.grid-item:nth-child(5)', {
+        color: '#86c232',
+        strokeWidth: 10,
+        trailWidth: 10,
+        text: {
+          value: '',
+          className: 'progress-text'
+        }
+      });
+      progressInitialized = true;
+    }
+
+    moistureProgress.set(moisturePercentage); // Scale the moisture percentage to a range of 0 to 1
+    // Scale the moisture value to a range of 0 to 1
+  });
+}
+
+var pumpOverrideButton = document.getElementById('pumpOverrideButton');
+var pumpRuntimeInput = document.getElementById('pumpRuntimeInput');
+
+// Add click event listener to the pump override button
+pumpOverrideButton.addEventListener('click', function() {
+  var pumpRuntime = pumpRuntimeInput.value;
+  if (pumpRuntime) {
+    // Send the pump runtime value to the database
+    database.ref('pumpRuntime').set(pumpRuntime*1000);
+    console.log('Pump override activated for ' + pumpRuntime + ' minutes.');
+
+    // Set the values in the database for Arduino code to read
+    var overrideStatusRef = database.ref('overrideStatus');
+    overrideStatusRef.set(true);
+    var pumpRuntimeRef = database.ref('pumpRuntimeValue');
+    pumpRuntimeRef.set(pumpRuntime);
+    console.log('Override status set to true. Pump runtime value set to ' + pumpRuntime);
+  } else {
+    console.log('Please enter a valid pump runtime.');
+  }
+});
+
+// Initial data fetch and placeholder update
+fetchDataAndUpdatePlaceholders();
+
+// Refresh data every 15 seconds
+setInterval(fetchDataAndUpdatePlaceholders, 15000);
+
+  </script>
+  
+
+</body>
+</html>
